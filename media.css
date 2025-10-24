@@ -1,0 +1,46 @@
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  h1 {
+    font-size: 24px;
+  }
+  a {
+    font-size: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  form {
+    width: 90%;
+    padding: 20px;
+  }
+  body {
+    margin: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: 22px;
+  }
+  a {
+    font-size: 18px;
+  }
+  .card img {
+    height: 130px;
+  }
+  button {
+    padding: 6px 8px;
+    font-size: 14px;
+  }
+}

@@ -1,57 +1,71 @@
 const API = "https://68fae18894ec96066023c657.mockapi.io/api/v2/products";
-const loader = document.querySelector(".loader");
-window.onload = () => loader.style.display = "none";
-
 const list = document.querySelector("#list");
 const form = document.querySelector("#form");
+const loader = document.querySelector(".loader");
+
+window.addEventListener("load", function() {
+  loader.style.display = "none";
+  showData();
+});
 
 function showData() {
   fetch(API)
-    .then(r => r.json())
-    .then(d => {
-      list.innerHTML = d.map(x => `
-        <div class="card">
+    .then(res => res.json())
+    .then(data => {
+      list.innerHTML = "";
+      data.forEach((x, i) => {
+        let div = document.createElement("div");
+        div.className = "card";
+        div.setAttribute("data-aos", "fade-up");
+        div.setAttribute("data-aos-delay", i * 50);
+        div.innerHTML = `
           <img src="${x.image}" alt="">
           <h3>${x.name}</h3>
           <p>${x.price} so‘m</p>
-          ${form ? `
-            <button class="btn-edit" onclick="edit('${x.id}', '${x.name}', '${x.price}', '${x.image}')">✏️</button>
-            <button class="btn-del" onclick="del('${x.id}')">🗑️</button>
-          ` : ""}
-        </div>
-      `).join("");
+        `;
+        if (form) {
+          div.innerHTML += `
+            <button class="btn-edit" onclick="edit(${x.id}, '${x.name}', '${x.price}', '${x.image}')">✏️</button>
+            <button class="btn-del" onclick="del(${x.id})">🗑️</button>
+          `;
+        }
+        list.appendChild(div);
+      });
+      AOS.init({ duration: 800 });
     });
 }
-showData();
 
 if (form) {
-  form.onsubmit = e => {
+  form.onsubmit = function(e) {
     e.preventDefault();
-    let item = {
+    let newProduct = {
       name: name.value,
       price: price.value,
       image: image.value
     };
     fetch(API, {
       method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(item)
-    }).then(showData);
-    form.reset();
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newProduct)
+    }).then(() => {
+      form.reset();
+      showData();
+    });
   };
 }
 
 function del(id) {
-  fetch(`${API}/${id}`, {method: "DELETE"}).then(showData);
+  fetch(`${API}/${id}`, { method: "DELETE" })
+    .then(showData);
 }
 
 function edit(id, n, p, img) {
-  let name2 = prompt("Nomi:", n);
-  let price2 = prompt("Narxi:", p);
-  let img2 = prompt("Rasm URL:", img);
+  let newName = prompt("Yangi nomi:", n);
+  let newPrice = prompt("Yangi narxi:", p);
+  let newImg = prompt("Yangi rasm URL:", img);
   fetch(`${API}/${id}`, {
     method: "PUT",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({name: name2, price: price2, image: img2})
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name: newName, price: newPrice, image: newImg })
   }).then(showData);
 }

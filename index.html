@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html lang="uz">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tovarlar</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <div class="loader"></div>
-  <h1>Tovarlar ro‘yxati</h1>
-  <a href="admin.html">Admin panel</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tovarlar</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./media.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="loader"></div>
+    <div class="container">
+      <h1>Tovarlar ro‘yxati</h1>
+      <a href="admin.html">Admin panel</a>
 
-  <div id="list" class="grid"></div>
-
-  <script src="./script.js"></script>
-</body>
+      <div id="list" class="grid"></div>
+    </div>
+    <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
+    </script>
+  </body>
 </html>

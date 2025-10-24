@@ -1,14 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 20px;
   background: #f4f4f4;
 }
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 20px;
+}
 h1 {
-  color: #7f4dff;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 28px;
+  color: #333;
+  font-weight: 600;
 }
 a {
   color: #7f4dff;
   text-decoration: none;
+  text-align: center;
+  display: block;     
+  margin-top: 20px;
+  font-size: 28px;
+  font-weight: 600;
+}
+a:hover {
+  color: #5a32cc;
+  text-decoration: underline;
 }
 .grid {
   display: grid;
@@ -21,6 +44,10 @@ a {
   padding: 10px;
   border-radius: 10px;
   text-align: center;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 6px 20px rgba(127, 77, 255, 0.25);
 }
 .card img {
   width: 100%;
@@ -44,13 +71,37 @@ button {
   background: #ffb74d;
 }
 form {
-  margin: 20px 0;
-  display: flex;
-  gap: 10px;
+  max-width: 600px;
+  width: 100%;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-input {
-  padding: 6px;
-  flex: 1;
+
+form input,
+form textarea,
+form select,
+form button {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+form button {
+  background: #7f4dff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background: #6939d4;
 }
 .loader {
   position: fixed;

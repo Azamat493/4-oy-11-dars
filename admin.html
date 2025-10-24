@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html lang="uz">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin panel</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <div class="loader"></div>
-  <h1>Admin panel</h1>
-  <a href="index.html">Tovarlar</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin panel</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./media.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="loader"></div>
+    <h1>Admin panel</h1>
+    <a href="index.html">Tovarlar</a>
 
-  <form id="form">
-    <input id="name" placeholder="Nomi" required />
-    <input id="price" placeholder="Narxi" required />
-    <input id="image" placeholder="Rasm URL" required />
-    <button>Qo‘shish</button>
-  </form>
+    <form id="form">
+      <input id="name" placeholder="Nomi" required />
+      <input id="price" placeholder="Narxi" required />
+      <input id="image" placeholder="Rasm URL" required />
+      <button>Qo‘shish</button>
+    </form>
 
-  <div id="list" class="grid"></div>
+    <div id="list" class="grid"></div>
 
-  <script src="./script.js"></script>
-</body>
+    <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
+    </script>
+  </body>
 </html>
