@@ -240,13 +240,14 @@ form button:hover {
 }
 
 .error-page a {
+  display: inline-block;
+  background-color: #7f4dff;
+  color: white;
   text-decoration: none;
-  color: #fff;
-  background: #7f4dff;
   padding: 12px 25px;
   border-radius: 8px;
-  font-weight: 600;
-  transition: 0.3s;
+  font-weight: 500;
+  transition: 0.3s ease;
 }
 
 .error-page a:hover {
