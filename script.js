@@ -45,7 +45,7 @@ function showData(data) {
   AOS.init({ duration: 800 });
 }
 
-// search + sort funksiyasi
+
 function filterAndSort() {
   let filtered = productsData.filter((p) =>
     p.name.toLowerCase().includes(searchInput.value.toLowerCase())
