@@ -29,19 +29,24 @@
   </head>
   <body>
     <div class="loader"></div>
-    <h1>Admin panel</h1>
+    <div class="container">
+      <a href="./index.html">Rasm tanlashga qaytish</a>
+      <h1>Tovarlar ro‘yxati</h1>
+      <a href="admin.html" class="admin">Admin panel</a>
+      <div class="controls">
+        <input type="text" id="search" placeholder="Tovar qidirish..." />
+        <div class="custom-select">
+          <select id="sort">
+            <option value="default">Saralash</option>
+            <option value="asc">Narx: Oshish</option>
+            <option value="desc">Narx: Kamayish</option>
+          </select>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+      </div>
 
-    <a href="tovar.html">Tovarlar</a>
-
-    <form id="form">
-      <input id="name" placeholder="Nomi" required />
-      <input id="price" placeholder="Narxi" required />
-      <input id="image" placeholder="Rasm URL" required />
-      <button>Qo‘shish</button>
-    </form>
-
-    <div id="list" class="grid"></div>
-
+      <div id="list" class="grid"></div>
+    </div>
     <script src="./script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>

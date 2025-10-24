@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tovarlar</title>
+    <title>Uy ishi</title>
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./media.css" />
+    <link
+      rel="shortcut icon"
+      href="./images/photo_2025-02-27_09-44-11.jpg"
+      type="image/x-icon"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -14,22 +19,41 @@
       href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
-    <div class="loader"></div>
-    <div class="container">
-      <h1>Tovarlar ro‘yxati</h1>
-      <a href="admin.html">Admin panel</a>
-
-      <div id="list" class="grid"></div>
+    <div class="login-container">
+      <h2>Saytga kirish uchun rasm tanlang</h2>
+      <div class="avatars">
+        <a href="./ahmoq.html">
+          <img
+            src="./images/photo_2024-11-02_21-29-02.jpg"
+            alt="Ali"
+            data-name="Shodiyor"
+          />
+        </a>
+        <a href="./tovar.html">
+          <img
+            src="./images/photo_2025-02-27_09-44-11.jpg"
+            alt="Hasan Ustoz"
+            data-name="Hasan"
+          />
+        </a>
+        <a href="./dovdir.html">
+          <img
+            src="./images/photo_2018-06-15_13-10-54.jpg"
+            alt="Olim"
+            data-name="Azamat"
+          />
+        </a>
+      </div>
     </div>
-    <script src="./script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        duration: 800,
-        once: true,
-      });
-    </script>
+    <script src="login.js"></script>
   </body>
 </html>
