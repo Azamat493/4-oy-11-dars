@@ -4,11 +4,12 @@ const form = document.querySelector("#form");
 const loader = document.querySelector(".loader");
 
 window.addEventListener("load", function() {
-  loader.style.display = "none";
   showData();
 });
 
 function showData() {
+  loader.style.display = "flex";
+
   fetch(API)
     .then(res => res.json())
     .then(data => {
@@ -25,13 +26,16 @@ function showData() {
         `;
         if (form) {
           div.innerHTML += `
-            <button class="btn-edit" onclick="edit(${x.id}, '${x.name}', '${x.price}', '${x.image}')">✏️</button>
-            <button class="btn-del" onclick="del(${x.id})">🗑️</button>
+            <button class="btn-edit" onclick="edit('${x.id}', '${x.name}', '${x.price}', '${x.image}')">✏️</button>
+            <button class="btn-del" onclick="del('${x.id}')">🗑️</button>
           `;
         }
         list.appendChild(div);
       });
       AOS.init({ duration: 800 });
+    })
+    .finally(() => {
+      loader.style.display = "none";
     });
 }
 
@@ -55,8 +59,7 @@ if (form) {
 }
 
 function del(id) {
-  fetch(`${API}/${id}`, { method: "DELETE" })
-    .then(showData);
+  fetch(`${API}/${id}`, { method: "DELETE" }).then(showData);
 }
 
 function edit(id, n, p, img) {
