@@ -30,9 +30,12 @@ function showData(data) {
     div.setAttribute("data-aos", "fade-up");
     div.setAttribute("data-aos-delay", i * 50);
     div.innerHTML = `
-      <img src="${x.image}" alt="">
+          <img src="${x.image}" alt="${x.name}">
       <h3>${x.name}</h3>
-      <p>${x.price} so‘m</p>
+      <p class="description">${x.description}</p>
+      <p class="price">${x.price} so‘m</p>
+      <p class="rating">⭐ ${x.rating}</p>
+       <p class="category">Kategoriya: ${x.category}</p>
     `;
     if (form) {
       div.innerHTML += `

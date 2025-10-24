@@ -299,3 +299,31 @@ margin-bottom: 15px;
 .admin {
     margin-bottom: 60px;
 }
+.card .description {
+  font-size: 14px;       
+  color: #555;           
+  font-style: italic;    
+  margin: 5px 0;          
+  line-height: 1.4;       
+}
+.card .category {
+  font-size: 13px;         
+  font-weight: 500;        
+  color: #7f4dff;          
+  background: #f3e8ff;     
+  padding: 4px 8px;         
+  border-radius: 6px;      
+  display: block;     
+  margin: 5px 0;           
+}
+.card .rating {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffb400;         
+  background: #fff7e6;      
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: block;
+  width: 150px;
+  margin: auto;
+}
