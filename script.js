@@ -1,4 +1,7 @@
+
 const API = "https://68fae18894ec96066023c657.mockapi.io/api/v2/products";
+
+
 const list = document.querySelector("#list");
 const form = document.querySelector("#form");
 const loader = document.querySelector(".loader");
@@ -13,11 +16,17 @@ const descriptionInput = document.querySelector("#description");
 const ratingInput = document.querySelector("#rating");
 const categoryInput = document.querySelector("#category");
 
+
 let productsData = [];
+
+
+const isAdminPage = window.location.pathname.includes("admin.html");
+
 
 window.addEventListener("load", function () {
   fetchProducts();
 });
+
 
 function fetchProducts() {
   loader.style.display = "flex";
@@ -29,6 +38,7 @@ function fetchProducts() {
     })
     .finally(() => (loader.style.display = "none"));
 }
+
 
 function showData(data) {
   list.innerHTML = "";
@@ -44,8 +54,16 @@ function showData(data) {
       <p class="price">${x.price} so‘m</p>
       <p class="rating">⭐ ${x.rating}</p>
       <p class="category">Kategoriya: ${x.category}</p>
-      <button class="btn-edit" onclick="edit('${x.id}', '${x.name}', '${x.price}', '${x.image}', '${x.description}', '${x.rating}', '${x.category}')">✏️</button>
-      <button class="btn-del" onclick="del('${x.id}')">🗑️</button>
+      ${
+        isAdminPage
+          ? `
+        <div class="actions">
+          <button class="btn-edit" onclick="edit('${x.id}', '${x.name}', '${x.price}', '${x.image}', '${x.description}', '${x.rating}', '${x.category}')">✏️</button>
+          <button class="btn-del" onclick="del('${x.id}')">🗑️</button>
+        </div>
+      `
+          : ""
+      }
     `;
     list.appendChild(div);
   });
@@ -58,8 +76,8 @@ function filterAndSort() {
     p.name.toLowerCase().includes(searchInput.value.toLowerCase())
   );
 
-  if (sortSelect.value === "asc") filtered.sort((a, b) => a.price - b.price);
-  else if (sortSelect.value === "desc")
+  if (sortSelect?.value === "asc") filtered.sort((a, b) => a.price - b.price);
+  else if (sortSelect?.value === "desc")
     filtered.sort((a, b) => b.price - a.price);
 
   showData(filtered);
@@ -69,7 +87,7 @@ searchInput?.addEventListener("input", filterAndSort);
 sortSelect?.addEventListener("change", filterAndSort);
 
 
-if (form) {
+if (form && isAdminPage) {
   form.onsubmit = function (e) {
     e.preventDefault();
 
@@ -94,18 +112,35 @@ if (form) {
 }
 
 
+
 function del(id) {
+  if (!isAdminPage) return; 
   fetch(`${API}/${id}`, { method: "DELETE" }).then(fetchProducts);
 }
 
 
+
+
 function edit(id, n, p, img, desc, rating, category) {
+  if (!isAdminPage) return; 
+
   let newName = prompt("Yangi nomi:", n);
   let newPrice = prompt("Yangi narxi:", p);
   let newImg = prompt("Yangi rasm URL:", img);
   let newDesc = prompt("Yangi tavsif:", desc);
   let newRating = prompt("Yangi bahosi:", rating);
   let newCategory = prompt("Yangi kategoriyasi:", category);
+
+  if (
+    newName === null ||
+    newPrice === null ||
+    newImg === null ||
+    newDesc === null ||
+    newRating === null ||
+    newCategory === null
+  ) {
+    return; 
+  }
 
   fetch(`${API}/${id}`, {
     method: "PUT",
